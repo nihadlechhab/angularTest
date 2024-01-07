@@ -1,0 +1,40 @@
+<p>reactive-form works!</p>
+<form [formGroup]="addLoanTypesForm">
+
+    
+
+    <div class="form-group">
+        <label for="loanName">Loan Name</label>
+        <input type="text" id="loanName" formControlName="loanName" (keyup)="trackLoanName()">
+        <span class="bld-danger" *ngIf="addLoanTypesForm.get('loanName')?.hasError('required') && addLoanTypesForm.get('loanName')?.touched">is required</span>
+        <span class="bld-danger" *ngIf="addLoanTypesForm.get('loanName')?.hasError('minlength') && addLoanTypesForm.get('loanName')?.touched">loan name should be 10 caracters</span>
+        <span class="bld-danger" *ngIf="addLoanTypesForm.get('loanName')?.hasError('maxlength') && addLoanTypesForm.get('loanName')?.touched">loan name should be less than 15 caracters</span>
+    </div>
+    <div class="form-group"> 
+        <label for="loanDescription">Loan Description</label>
+        <textarea formControlName="loanDesciption"></textarea>
+    </div>
+
+    <!-- 
+      <div class="form-group" formArrayName="users">
+        <label for="users">Users</label>
+        <div *ngFor="let control of getUsersControls(); let i = index">
+          <input type="text" [formControlName]="i">
+        </div>
+      </div>
+       -->
+
+       <div class="form-group" formArrayName="users">
+        <label for="users">Users</label>
+        <div *ngFor="let control of getUsersControls(); let i = index;" [formGroupName]="i">
+          <input type="text" formControlName="name">
+          <input type="text" formControlName="age" (blur)="assigndept(i)">
+          <input type="text" formControlName="departement">
+          <button (click)="removeUser(i)" > remove User</button>
+
+        </div>
+      </div>
+    <button (click)="loanType()" [disabled]="!addLoanTypesForm.valid "> add loan</button>
+    <button (click)="addUser()" > add User</button>
+  </form>
+  

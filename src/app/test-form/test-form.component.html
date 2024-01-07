@@ -1,0 +1,18 @@
+<p>test-form works!</p>
+<form #addform="ngForm" (submit)="addForm(addform)">
+    <input type="text" [(ngModel)]="firstname" name="firstname" required minlength="10">
+    <br>
+    <input type="Checkbox" [(ngModel)]="terms" name="terms" required> terms and Conditions
+    <br>
+    <select name="custype" [(ngModel)]="custype">
+        <option value="1">premium</option>
+        <option value="2">standart</option>
+        <option value="3"> vip</option>
+    </select>
+    <br>
+    <button type="submit" [disabled]="!addform.valid"> add </button>
+    <button class="btn btn-link" (click)="resetForm(addform)">  reset form</button>
+    <button class="btn btn-link" (click)="loadValues(addform)">  set form</button>
+
+</form>
+<div>{{firstname}}</div>

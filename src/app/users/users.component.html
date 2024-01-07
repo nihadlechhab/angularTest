@@ -1,0 +1,10 @@
+<p>users works!</p>
+<p>{{usersStatus}}</p>
+<ul>
+    <li *ngFor="let user of listUsers$">
+           {{user.name }}
+    </li>
+</ul>
+<h3>user details</h3>
+<div *ngIf="userMsg"> {{userMsg.name}}</div>
+<p>{{userDetails |json}}</p>

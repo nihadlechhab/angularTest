@@ -1,0 +1,17 @@
+<p>clinets works!</p>
+<table>
+
+    <th>IdClient</th>
+    <th>firstName</th>
+    <th>lastName</th>
+   
+    <tr *ngFor=" let client of clientList">
+       <td> {{client.idC}}</td>
+       <td> {{client.fn}}</td>
+       <td> {{client.ln}}</td>
+       <td> <a [routerLink]="['/client',client.idC, 'edit']"> edit </a> | <a [routerLink]="'/delete'"> delete</a></td>
+    </tr>
+    
+
+    
+</table>
